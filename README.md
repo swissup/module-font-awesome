@@ -14,8 +14,6 @@ bin/magento setup:upgrade
 
 ### Usage
 
-All built-in icons will be automatically replaced with FontAwesome analogue.
-
 To add icons to the custom content, use the following code:
 
 ```html
