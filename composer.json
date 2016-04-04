@@ -1,6 +1,6 @@
 {
     "name": "swissup/font-awesome",
-    "description": "Adds and replaces all Magento2 icons with FontAwesome",
+    "description": "FontAwesome in Magento2",
     "type": "magento2-module",
     "version": "0.2.0",
     "license": "GPL",
