@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <swissup_fontawesome>
+            <general>
+                <enabled>1</enabled>
+                <use_cdn>1</use_cdn>
+                <cdn_embed_code></cdn_embed_code>
+            </general>
+        </swissup_fontawesome>
+    </default>
+</config>
