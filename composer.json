@@ -1,6 +1,13 @@
 {
     "name": "swissup/font-awesome",
-    "description": "FontAwesome in Magento2",
+    "description": "FontAwesome for Magento2",
+    "keywords": [
+        "font awesome",
+        "font-awesome",
+        "fontawesome",
+        "icons",
+        "font"
+    ],
     "type": "magento2-module",
     "version": "1.0.0",
     "license": "MIT",
