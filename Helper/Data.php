@@ -27,7 +27,13 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * @var string
      */
+    const ASSET_EMBED_URL = 'https://use.fontawesome.com/';
+
+    /**
+     * @var string
+     */
     const ASSET_LOCAL_URL = 'Swissup_FontAwesome::font-awesome-4.6.3/css/font-awesome.min.css';
+
 
     /**
      * Retrieve isFontAwesomeEnabled flag
@@ -84,31 +90,38 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * Get remote font awesome asset objects
+     * Get remote font awesome asset object
      *
      * @return \Magento\Framework\DataObject
      */
     public function getRemoteAsset()
     {
-        $asset = $this->getBaseAsset();
-        $embed = $this->getCdnEmbedCode();
-        if ($embed) {
-            // @todo parse possible input values:
-            // Css:
+        if (($embed = $this->getCdnEmbedCode())) {
+            // match the following strings:
             //  1. <link rel="stylesheet" href="https://use.fontawesome.com/28b0d407b2.css">
-            //  2. https://use.fontawesome.com/28b0d407b2.css
-            //  3. 28b0d407b2.css
-            // Js:
-            //  1. <script src="https://use.fontawesome.com/77ca4931fd.js"></script>
-            //  2. https://use.fontawesome.com/77ca4931fd.js
-            //  3. 77ca4931fd.js
-            //  4. 77ca4931fd
+            //  2. <script src="https://use.fontawesome.com/77ca4931fd.js"></script>
+            //  3. https://use.fontawesome.com/77ca4931fd.js
+            //  4. 77ca4931fd.js
+
+            $regex = '/[\w]+\.(css|js)/';
+            preg_match($regex, $embed, $result);
+            if (!$result) {
+                $url  = $embed . '.js';
+                $type = 'js';
+            } else {
+                $url  = $result[0];
+                $type = $result[1];
+            }
+            $url = self::ASSET_EMBED_URL . $url;
         } else {
-            $asset->addData([
-                'url'  => self::ASSET_REMOTE_URL,
-                'type' => 'css'
-            ]);
+            $url  = self::ASSET_REMOTE_URL;
+            $type = 'css';
         }
+        $asset = $this->getBaseAsset();
+        $asset->addData([
+            'url'  => $url,
+            'type' => $type
+        ]);
         return $asset;
     }
 
