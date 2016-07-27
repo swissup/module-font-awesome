@@ -17,13 +17,13 @@
                     <label>Use CDN</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <!-- <field id="cdn_embed_code" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="cdn_embed_code" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Embed Code (Optional)</label>
-                    <comment>Get your embed code at https://cdn.fontawesome.com/embed-codes</comment>
+                    <comment>BETA VERSION. CSS EMBEDS ARE SUPPORTED ONLY. Get your embed code at https://cdn.fontawesome.com/embed-codes</comment>
                     <depends>
                         <field id="use_cdn">1</field>
                     </depends>
-                </field> -->
+                </field>
             </group>
         </section>
     </system>
