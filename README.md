@@ -18,7 +18,7 @@ composer config repositories.swissup composer http://swissup.github.io/packages/
 composer require swissup/font-awesome --prefer-source
 
 # 2. Enable module and run upgrades
-bin/magento module:enable Swissup_FontAwesome
+bin/magento module:enable Swissup_Core Swissup_FontAwesome
 bin/magento setup:upgrade
 ```
 
