@@ -22,7 +22,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * @var string
      */
-    const ASSET_REMOTE_URL = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css';
+    const ASSET_REMOTE_URL = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
 
     /**
      * @var string
@@ -32,7 +32,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * @var string
      */
-    const ASSET_LOCAL_URL = 'Swissup_FontAwesome::font-awesome-4.6.3/css/font-awesome.min.css';
+    const ASSET_LOCAL_URL = 'Swissup_FontAwesome::font-awesome-4.7.0/css/font-awesome.min.css';
 
 
     /**
