@@ -64,6 +64,7 @@ Add the following variables into your theme less file:
 @icon-comment-reflected: '\f075';
 @icon-collapse: '\f147';
 @icon-checkmark: '\f00c';
+@icon-bag: '\f290';
 @icon-cart: '\f291';
 @icon-calendar: '\f073';
 @icon-arrow-up: '\f176';
