@@ -1,40 +1,50 @@
-# Font Awesome
+# Font Awesome 4
 
-[Font Awesome][fontawesome_homepage] for Magento2
+[Font Awesome 4](https://fontawesome.com/v4.7.0/) for Magento2.
+
+Looking for FontAwesome5? We have a separate repository for it:
+https://github.com/swissup/font-awesome-5
 
 ### Contents
 
-1. [Installation](#installation)
-2. [Usage](#usage)
-3. [How to replace standard Magento icons](#how-to-replace-standard-magento-icons)
+ 1. [Installation](#installation)
+ 2. [Usage](#usage)
+ 3. [Advanced Usage](#advanced-usage)
+ 4. [How to replace standard Magento icons](#how-to-replace-standard-magento-icons)
 
 ### Installation
 
 ```bash
 cd <magento_root>
-
-# 1. Get source code
 composer require swissup/font-awesome
-
-# 2. Enable module and run upgrades
 bin/magento module:enable Swissup_Core Swissup_FontAwesome
 bin/magento setup:upgrade
 ```
 
 ### Usage
 
-To add icons to the custom content, use the following code:
+ 1. Search for icon you need at [official FontAwesome site](https://fontawesome.com/v4.7.0/icons/)
+ 2. Copy and Paste selected code into HTML content.
 
-```html
-<i class="fa fa-camera-retro"></i>
-```
+    Example:
 
-1. See the list of available examples at fontawesome's [official site][fontawesome_examples]
-2. Search for icon you need at [official site][fontawesome_icons]
+    ```html
+    <i class="fa fa-camera-retro"></i>
+    ```
 
-[fontawesome_homepage]: http://fortawesome.github.io/Font-Awesome/
-[fontawesome_examples]: http://fortawesome.github.io/Font-Awesome/examples/
-[fontawesome_icons]: http://fortawesome.github.io/Font-Awesome/icons/
+ 3. That's all!
+
+### Advanced Usage
+
+Looking for advanced usage examples? Here you go:
+
+ - [Sizing Icons](https://fontawesome.com/v4.7.0/examples/#larger)
+ - [Fixed Width Icons](https://fontawesome.com/v4.7.0/examples/#fixed-width)
+ - [Icons as a List](https://fontawesome.com/v4.7.0/examples/#list)
+ - [Bordered + Pulled Icons](https://fontawesome.com/v4.7.0/examples/#bordered-pulled)
+ - [Animating Icons](https://fontawesome.com/v4.7.0/examples/#animated)
+ - [Rotating Icons](https://fontawesome.com/v4.7.0/examples/#rotated-flipped)
+ - [Stacking Icons](https://fontawesome.com/v4.7.0/examples/#stacked)
 
 ### How to replace standard Magento icons
 
