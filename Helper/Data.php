@@ -27,6 +27,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * @var string
      */
+    const ASSET_REMOTE_PRELOAD_URL = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0';
+
+    /**
+     * @var string
+     */
     const ASSET_EMBED_URL = 'https://use.fontawesome.com/';
 
     /**
@@ -34,6 +39,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     const ASSET_LOCAL_URL = 'Swissup_FontAwesome::font-awesome-4.7.0/css/font-awesome.min.css';
 
+    /**
+     * @var string
+     */
+    const ASSET_LOCAL_PRELOAD_URL = 'Swissup_FontAwesome::font-awesome-4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0';
 
     /**
      * Retrieve isFontAwesomeEnabled flag
@@ -77,15 +86,37 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Get basic font awesome asset object
      *
+     * @param array $data
      * @return \Magento\Framework\DataObject
      */
-    protected function getBaseAsset()
+    protected function getBaseAsset(array $data = [])
     {
-        $asset = new \Magento\Framework\DataObject();
-        $asset->addData([
+        $asset = new \Magento\Framework\DataObject([
             'properties' => [],
             'name' => 'swissup_fontawesome'
         ]);
+        $asset->addData($data);
+
+        return $asset;
+    }
+
+    /**
+     * Get basic font awesome asset to preload
+     *
+     * @param array $data
+     * @return \Magento\Framework\DataObject
+     */
+    protected function getBasePreloadAsset(array $data = [])
+    {
+        $asset = $this->getBaseAsset([
+            'type' => '',
+            'name' => 'swissup_fontawesome_preload',
+            'properties' => [
+                'attributes' => 'rel="preload" as="font" crossorigin="anonymous"',
+            ],
+        ]);
+        $asset->addData($data);
+
         return $asset;
     }
 
@@ -117,11 +148,15 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             $url  = self::ASSET_REMOTE_URL;
             $type = 'css';
         }
-        $asset = $this->getBaseAsset();
-        $asset->addData([
+
+        $asset = $this->getBaseAsset([
             'url'  => $url,
-            'type' => $type
+            'type' => $type,
+            'preload' => $this->getBasePreloadAsset([
+                'url' => self::ASSET_REMOTE_PRELOAD_URL,
+            ]),
         ]);
+
         return $asset;
     }
 
@@ -132,10 +167,12 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getLocalAsset()
     {
-        $asset = $this->getBaseAsset();
-        $asset->addData([
+        $asset = $this->getBaseAsset([
             'url'  => self::ASSET_LOCAL_URL,
-            'type' => 'css'
+            'type' => 'css',
+            'preload' => $this->getBasePreloadAsset([
+                'url' => self::ASSET_LOCAL_PRELOAD_URL,
+            ]),
         ]);
         return $asset;
     }

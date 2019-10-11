@@ -51,6 +51,10 @@ class AddPageAssets implements \Magento\Framework\Event\ObserverInterface
             $asset->getProperties(),
             $asset->getName()
         );
+
+        if ($asset->hasPreload()) {
+            $this->addRemoteAsset($asset->getPreload());
+        }
     }
 
     protected function addLocalAsset($asset)
@@ -60,5 +64,9 @@ class AddPageAssets implements \Magento\Framework\Event\ObserverInterface
             $asset->getProperties(),
             $asset->getName()
         );
+
+        if ($asset->hasPreload()) {
+            $this->addLocalAsset($asset->getPreload());
+        }
     }
 }
