@@ -121,6 +121,19 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Determine if we can use preload
+     * Added to fix "Access to font has been blocked by CORS policy" error in Page Builder
+     *
+     * @return boolean
+     */
+    protected function canUsePreload()
+    {
+        $request = $this->_getRequest();
+
+        return $request->getFullActionName() !== 'pagebuilder_stage_render';
+    }
+
+    /**
      * Get remote font awesome asset object
      *
      * @return \Magento\Framework\DataObject
@@ -149,13 +162,18 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             $type = 'css';
         }
 
-        $asset = $this->getBaseAsset([
+        $assetConfig = [
             'url'  => $url,
             'type' => $type,
-            'preload' => $this->getBasePreloadAsset([
+        ];
+
+        if ($this->canUsePreload()) {
+            $assetConfig['preload'] = $this->getBasePreloadAsset([
                 'url' => self::ASSET_REMOTE_PRELOAD_URL,
-            ]),
-        ]);
+            ]);
+        }
+
+        $asset = $this->getBaseAsset($assetConfig);
 
         return $asset;
     }
@@ -167,13 +185,19 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getLocalAsset()
     {
-        $asset = $this->getBaseAsset([
+        $assetConfig = [
             'url'  => self::ASSET_LOCAL_URL,
             'type' => 'css',
-            'preload' => $this->getBasePreloadAsset([
+        ];
+
+        if ($this->canUsePreload()) {
+            $assetConfig['preload'] = $this->getBasePreloadAsset([
                 'url' => self::ASSET_LOCAL_PRELOAD_URL,
-            ]),
-        ]);
+            ]);
+        }
+
+        $asset = $this->getBaseAsset($assetConfig);
+
         return $asset;
     }
 }
