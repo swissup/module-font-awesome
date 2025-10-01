@@ -9,10 +9,10 @@
         "font"
     ],
     "type": "magento2-module",
-    "version": "1.4.3",
+    "version": "1.4.4",
     "license": "MIT",
     "require": {
-        "swissup/module-core": "^1.12.9"
+        "swissup/module-core": "^1.12.24"
     },
     "autoload": {
         "files": [ "registration.php" ],
