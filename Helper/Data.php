@@ -149,11 +149,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function isPreloadFontEnabled()
     {
-        return $this->scopeConfig->getValue(
+        return $this->scopeConfig->isSetFlag(
             self::CONFIG_PATH_PRELOAD_FONT,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
-    }
 
     /**
      * Get remote font awesome asset object
