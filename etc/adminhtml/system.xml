@@ -17,6 +17,11 @@
                     <label>Use CDN</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+                <field id="preload_font" translate="label comment" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Preload Font</label>
+                    <comment>Adds &lt;link rel="preload"&gt; for the Font Awesome webfont on every page. Disable if the icon font is not used above the fold - the CSS @font-face rule still loads it on demand.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
                 <field id="cdn_embed_code" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Embed Code (Optional)</label>
                     <comment>BETA VERSION. CSS EMBEDS ARE SUPPORTED ONLY. Get your embed code at https://cdn.fontawesome.com/embed-codes</comment>
