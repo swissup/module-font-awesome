@@ -22,6 +22,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * @var string
      */
+    const CONFIG_PATH_PRELOAD_FONT = 'swissup_fontawesome/general/preload_font';
+
+    /**
+     * @var string
+     */
     const ASSET_REMOTE_URL = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
 
     /**
@@ -128,9 +133,26 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected function canUsePreload()
     {
+        if (!$this->isPreloadFontEnabled()) {
+            return false;
+        }
+
         $request = $this->_getRequest();
 
         return $request->getFullActionName() !== 'pagebuilder_stage_render';
+    }
+
+    /**
+     * Retrieve isPreloadFontEnabled flag
+     *
+     * @return boolean
+     */
+    public function isPreloadFontEnabled()
+    {
+        return $this->scopeConfig->getValue(
+            self::CONFIG_PATH_PRELOAD_FONT,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
